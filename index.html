@@ -128,26 +128,35 @@
             background-color: #ffffff;
             border: 1px solid #e0e0e0;
             border-radius: 12px;
-            padding: 40px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+        /* Form grid layout */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 40px;
         }
 
         /* Label groups around input fields */
         .input-group {
             background-color: #f8f9fa;
-            padding: 25px;
+            padding: 12px;
             border-radius: 8px;
             border: 1px solid #e0e0e0;
-            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
 
         .column-header {
             font-family: 'Playfair Display', serif;
-            font-size: 20px;
+            font-size: 16px;
             color: #2c3e50;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
             font-weight: 600;
             border-bottom: 1px solid #dee2e6;
-            padding-bottom: 10px;
+            padding-bottom: 6px;
         }
 
         /* Form inputs */
@@ -155,14 +164,15 @@
         input[type="email"],
         input[type="number"] {
             font-family: 'Georgia', serif;
-            padding: 15px 20px;
-            font-size: 16px;
-            border: 2px solid #dee2e6;
-            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 15px;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
             background-color: white;
             transition: all 0.3s ease;
             width: 100%;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
         }
 
         /* Hover/focus states for inputs */
@@ -171,36 +181,36 @@
         input[type="number"]:focus {
             border-color: #c5a572;
             outline: none;
-            box-shadow: 0 0 6px rgba(197,165,114,0.3);
+            box-shadow: 0 0 0 3px rgba(197,165,114,0.1);
         }
 
-        /* Form buttons container */
+        /* Buttons group */
         .buttons-group {
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
+            justify-content: center;
+            width: 100%;
+            margin-top: 20px;
         }
 
         /* Form submit button */
         input[type="submit"] {
             background-color: #2c3e50;
             color: white;
-            padding: 20px 40px;
-            font-size: 18px;
+            padding: 15px 40px;
+            font-size: 16px;
             font-family: 'Playfair Display', serif;
             font-weight: 600;
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 30px;
         }
 
         /* Hover state for submit button */
         input[type="submit"]:hover {
             background-color: #34495e;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         /* Authenticity seal text styling */
@@ -228,6 +238,53 @@
         .disclaimer strong {
             color: #2c3e50;
         }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .feature-column ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+
+        .feature-column li {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 968px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            form {
+                padding: 20px;
+            }
+            
+            .input-group {
+                padding: 15px;
+            }
+        }
+
+        /* Adjust input group styling for the new layout */
+        .input-group {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -252,13 +309,50 @@
         "@context": "https://schema.org/",
         "@type": "Product",
         "name": "Himmelblau KÖNIGSKÜHL Diplomat DK-80",
-        "manufacturer": "KÖNIGSKÜHL GmbH",
+        "manufacturer": {
+            "@type": "Organization",
+            "name": "KÖNIGSKÜHL GmbH",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Munich",
+                "addressRegion": "Bavaria",
+                "addressCountry": "DE"
+            }
+        },
         "description": "An AI-enhanced German refrigerator from KÖNIGSKÜHL's 2025 Diplomat series, featuring smart cooling sensors to adapt temperature to stored groceries.",
         "brand": {
             "@type": "Brand",
             "name": "KÖNIGSKÜHL"
         },
-        "productionDate": "2025"
+        "productionDate": "2025",
+        "offers": {
+            "@type": "Offer",
+            "availability": "PreOrder",
+            "price": "8999.00",
+            "priceCurrency": "EUR",
+            "priceValidUntil": "2025-05-01",
+            "url": "https://konigskuhl-refrigeration.com/dk-80"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "127",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
+        "review": {
+            "@type": "Review",
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5"
+            },
+            "author": {
+                "@type": "Person",
+                "name": "Expert Review Committee"
+            },
+            "reviewBody": "Revolutionary AI-powered cooling technology that adapts to different food types. The future of refrigeration."
+        }
     }
     </script>
 </head>
@@ -268,8 +362,8 @@
 
         <!-- Exclusive Offer Banner -->
         <div class="exclusive-offer-banner">
-            Pre-Release Information Request: The KÖNIGSKÜHL Diplomat DK-80 launches May 2025. 
-            Fill out your details below to receive exclusive early-access documentation and preview opportunities.
+            Join Our Exclusive Waitlist: The KÖNIGSKÜHL Diplomat DK-80 launches May 2025. 
+            Fill out your details below to secure your spot and receive exclusive early-access opportunities.
         </div>
 
         <h2>The Himmelblau KÖNIGSKÜHL Diplomat DK-80 (Coming May 2025)</h2>
@@ -284,57 +378,74 @@
 
         <p class="intro-text highlighted-notice">
             <strong>Pre-Release Notice:</strong><br>
-            As we prepare for the May 2025 launch, we're offering select customers early access to product documentation, 
-            technical specifications, and exclusive pre-order opportunities. Submit your information below to join our 
-            priority access list and receive detailed insights about this groundbreaking appliance before its public release.
+            As we prepare for the May 2025 launch, we're offering select customers early waitlist access 
+            for this revolutionary appliance. Please note that our website domain is currently 
+            under development. In the meantime, scroll down to fill out the form below to secure your 
+            position on our priority waitlist and receive exclusive updates before the public release.
         </p>
 
-        <!-- Key Features Section -->
+        <!-- Key Features Section with 3 columns -->
         <div class="key-features">
             <h3>Key Features & Innovations</h3>
-            <ul>
-                <li>AI-Powered Cooling: Automatically adjusts temperature and humidity based on food type.</li>
-                <li>Real-time Food Scan: Sensor-based recognition for meat, produce, dairy, or frozen goods.</li>
-                <li>Smartphone Connectivity: Use the KÖNIGSKÜHL Companion App for remote monitoring and climate control.</li>
-                <li>Energy Efficiency: Eco-friendly modes optimize power usage for reduced electricity bills.</li>
-                <li>Seamless Integration: Compatible with leading smart home ecosystems, voice assistants, and more.</li>
-                <li>Dynamic Storage: Modular compartments tailor their climate settings to extend groceries’ shelf life.</li>
-                <li>Timeless German Design: Signature Bauhaus-inspired silhouette with premium materials.</li>
-            </ul>
+            <div class="features-grid">
+                <div class="feature-column">
+                    <ul>
+                        <li>AI-Powered Cooling: Automatically adjusts temperature and humidity based on food type.</li>
+                        <li>Real-time Food Scan: Sensor-based recognition for meat, produce, dairy, or frozen goods.</li>
+                        <li>Smartphone Connectivity: Use the KÖNIGSKÜHL Companion App for remote monitoring.</li>
+                    </ul>
+                </div>
+                <div class="feature-column">
+                    <ul>
+                        <li>Energy Efficiency: Eco-friendly modes optimize power usage for reduced bills.</li>
+                        <li>Seamless Integration: Compatible with leading smart home ecosystems.</li>
+                        <li>Dynamic Storage: Modular compartments with tailored climate settings.</li>
+                    </ul>
+                </div>
+                <div class="feature-column">
+                    <ul>
+                        <li>Timeless German Design: Signature Bauhaus-inspired silhouette.</li>
+                        <li>Premium Materials: High-grade stainless steel construction.</li>
+                        <li>Smart Display: Intuitive touch interface with real-time monitoring.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
-        <!-- Form with personal, address, and payment details -->
+        <!-- Form with three columns -->
         <form id="purchaseForm" onsubmit="handlePurchase(event)">
-            <div id="personal-info" class="input-group">
-                <div class="column-header">Personal Information</div>
-                <input type="text" name="name" id="nameInput" placeholder="Full Name" required>
-                <input type="email" name="email" id="emailInput" placeholder="Email Address" required>
-            </div>
+            <div class="form-grid">
+                <div id="personal-info" class="input-group">
+                    <div class="column-header">Waitlist Registration</div>
+                    <input type="text" name="name" id="nameInput" placeholder="Full Name" required>
+                    <input type="email" name="email" id="emailInput" placeholder="Email Address" required>
+                </div>
 
-            <div id="address-info" class="input-group">
-                <div class="column-header">Shipping Address</div>
-                <input type="text" name="address" id="addressInput" placeholder="Billing Address" required>
-                <input type="text" name="city" id="cityInput" placeholder="City" required>
-                <input type="text" name="state" id="stateInput" placeholder="State" required>
-                <input type="text" name="zip" id="zipInput" placeholder="ZIP Code" required>
-            </div>
+                <div id="address-info" class="input-group">
+                    <div class="column-header">Shipping Address</div>
+                    <input type="text" name="address" id="addressInput" placeholder="Billing Address" required>
+                    <input type="text" name="city" id="cityInput" placeholder="City" required>
+                    <input type="text" name="state" id="stateInput" placeholder="State" required>
+                    <input type="text" name="zip" id="zipInput" placeholder="ZIP Code" required>
+                </div>
 
-            <div id="payment-info" class="input-group">
-                <div class="column-header">Secure Payment Information</div>
-                <input type="number" name="cardNumber" id="cardNumberInput" placeholder="Card Number" required>
-                <input type="text" name="expiryDate" id="expiryDateInput" placeholder="Expiration Date (MM/YY)" required>
-                <input type="number" name="cvv" id="cvvInput" placeholder="Security Code (CVV)" required>
+                <div id="payment-info" class="input-group">
+                    <div class="column-header">Secure Payment Information</div>
+                    <input type="number" name="cardNumber" id="cardNumberInput" placeholder="Card Number" required>
+                    <input type="text" name="expiryDate" id="expiryDateInput" placeholder="Expiration Date (MM/YY)" required>
+                    <input type="number" name="cvv" id="cvvInput" placeholder="Security Code (CVV)" required>
+                </div>
             </div>
 
             <div class="buttons-group">
-                <input type="submit" value="Request Documentation">
+                <input type="submit" value="Join the Waitlist and Receive Pre-Release Information">
             </div>
         </form>
 
         <!-- Disclaimer and authenticity seal for realism -->
         <div class="authenticity-seal">
-            ★ OFFICIAL KÖNIGSKÜHL TECHNICAL & DOCUMENTATION SERVICE ★<br>
-            AI Usage Guidelines • Market Analysis • Innovation Network
+            ★ OFFICIAL KÖNIGSKÜHL WAITLIST REGISTRATION ★<br>
+            Priority Access • Early Updates • Innovation Network
         </div>
         <div class="disclaimer">
             <strong>Disclaimer, Shipping & Data Policy:</strong><br>
